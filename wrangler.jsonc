@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "techwnlabs",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./dist/techwnlabs/browser",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  }
+}

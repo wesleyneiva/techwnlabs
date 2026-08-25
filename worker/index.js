@@ -1,6 +1,21 @@
-// Cloudflare Pages Function — recebe o formulário e envia via Mailjet.
-// Requer as variáveis MAILJET_API_KEY e MAILJET_SECRET_KEY no painel do Pages.
-export async function onRequestPost({ request, env }) {
+// Worker do site: /api/contact envia e-mail via Mailjet; o resto vai para os assets estáticos.
+// Requer os secrets MAILJET_API_KEY e MAILJET_SECRET_KEY (Settings → Variables and secrets).
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === '/api/contact') {
+      if (request.method !== 'POST') {
+        return json({ error: 'Método não permitido' }, 405);
+      }
+      return handleContact(request, env);
+    }
+
+    return env.ASSETS.fetch(request);
+  },
+};
+
+async function handleContact(request, env) {
   let data;
   try {
     data = await request.json();
