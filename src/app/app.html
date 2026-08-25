@@ -186,6 +186,10 @@
             <input type="email" name="email" [(ngModel)]="form.email" required maxlength="160" autocomplete="email" placeholder="voce@empresa.com.br">
           </label>
           <label>
+            Telefone / WhatsApp
+            <input type="tel" name="phone" [(ngModel)]="form.phone" required minlength="10" maxlength="20" autocomplete="tel" inputmode="tel" pattern="[0-9()+\- ]{10,20}" placeholder="(51) 99999-9999">
+          </label>
+          <label>
             Mensagem
             <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="4000" placeholder="Conte rapidamente o que você precisa"></textarea>
           </label>

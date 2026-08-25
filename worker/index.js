@@ -25,11 +25,16 @@ async function handleContact(request, env) {
 
   const name = String(data.name || '').trim().slice(0, 120);
   const email = String(data.email || '').trim().slice(0, 160);
+  const phone = String(data.phone || '').trim().slice(0, 20);
   const message = String(data.message || '').trim().slice(0, 4000);
 
-  if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  const phoneDigits = phone.replace(/\D/g, '');
+  if (!name || !message || phoneDigits.length < 10 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json({ error: 'Campos inválidos' }, 400);
   }
+
+  // Link wa.me pronto para responder com um toque; DDI 55 se vier só DDD+número.
+  const waNumber = phoneDigits.length <= 11 ? `55${phoneDigits}` : phoneDigits;
 
   if (!env.MAILJET_API_KEY || !env.MAILJET_SECRET_KEY) {
     console.error('Secrets MAILJET_API_KEY/MAILJET_SECRET_KEY não configurados no Worker');
@@ -50,7 +55,7 @@ async function handleContact(request, env) {
           To: [{ Email: 'contato@wnlabs.com.br', Name: 'WN Labs' }],
           ReplyTo: { Email: email, Name: name },
           Subject: `Contato pelo site — ${name}`,
-          TextPart: `Nome: ${name}\nE-mail: ${email}\n\n${message}`,
+          TextPart: `Nome: ${name}\nE-mail: ${email}\nTelefone/WhatsApp: ${phone}\nResponder no WhatsApp: https://wa.me/${waNumber}\n\n${message}`,
         },
       ],
     }),

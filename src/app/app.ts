@@ -17,7 +17,7 @@ export class App {
   menuOpen = signal(false);
   status = signal<FormStatus>('idle');
 
-  form = { name: '', email: '', message: '' };
+  form = { name: '', email: '', phone: '', message: '' };
 
   toggleMenu(): void {
     this.menuOpen.update((v) => !v);
@@ -42,7 +42,7 @@ export class App {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this.status.set('sent');
-      this.form = { name: '', email: '', message: '' };
+      this.form = { name: '', email: '', phone: '', message: '' };
     } catch {
       this.status.set('error');
     }
