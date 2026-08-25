@@ -31,6 +31,11 @@ async function handleContact(request, env) {
     return json({ error: 'Campos inválidos' }, 400);
   }
 
+  if (!env.MAILJET_API_KEY || !env.MAILJET_SECRET_KEY) {
+    console.error('Secrets MAILJET_API_KEY/MAILJET_SECRET_KEY não configurados no Worker');
+    return json({ error: 'Configuração pendente' }, 502);
+  }
+
   const auth = btoa(`${env.MAILJET_API_KEY}:${env.MAILJET_SECRET_KEY}`);
   const res = await fetch('https://api.mailjet.com/v3.1/send', {
     method: 'POST',
@@ -52,6 +57,8 @@ async function handleContact(request, env) {
   });
 
   if (!res.ok) {
+    const body = await res.text();
+    console.error(`Mailjet respondeu ${res.status}: ${body.slice(0, 500)}`);
     return json({ error: 'Falha ao enviar' }, 502);
   }
   return json({ ok: true });
