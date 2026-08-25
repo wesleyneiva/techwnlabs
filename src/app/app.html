@@ -1,0 +1,159 @@
+<header class="header">
+  <div class="container header__inner">
+    <a href="#" class="header__brand" (click)="closeMenu()">
+      <img src="assets/wnlabs-principal.svg" alt="wnlabs — soluções em tecnologia" height="36">
+    </a>
+    <button class="header__toggle" (click)="toggleMenu()" aria-label="Abrir menu" [attr.aria-expanded]="menuOpen()">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="header__nav" [class.header__nav--open]="menuOpen()">
+      <a href="#servicos" (click)="closeMenu()">Serviços</a>
+      <a href="#diferencial" (click)="closeMenu()">Diferencial</a>
+      <a href="#sobre" (click)="closeMenu()">Sobre</a>
+      <a href="#contato" class="btn btn--primary btn--sm" (click)="closeMenu()">Fale conosco</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">● Software · Dados · IA · Conformidade</span>
+      <h1>Sistemas e dados <span class="accent">com conformidade</span> de ponta a ponta</h1>
+      <p class="hero__lead">
+        A WN Labs projeta software sob demanda, análise de dados e soluções com IA —
+        e responde pela adequação jurídica do que constrói. Engenharia e Direito Digital
+        na mesma conversa.
+      </p>
+      <div class="hero__actions">
+        <a href="#contato" class="btn btn--primary">Fale conosco →</a>
+        <a [href]="whatsappUrl" target="_blank" rel="noopener" class="btn btn--ghost">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="section section--soft">
+    <div class="container">
+      <p class="eyebrow">Serviços</p>
+      <h2>O que a WN Labs entrega</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon">&lt;/&gt;</div>
+          <h3>Desenvolvimento de software</h3>
+          <p>Sistemas web sob demanda, do levantamento de requisitos à publicação. Aplicações pensadas para o seu processo, não o contrário.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">▦</div>
+          <h3>Dados e IA</h3>
+          <p>Análise e modelagem de dados, relatórios e automações com inteligência artificial que transformam informação em decisão.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">✓</div>
+          <h3>Qualidade e testes</h3>
+          <p>Planejamento e execução de testes de software. Menos bug em produção, mais confiança em cada entrega.</p>
+        </article>
+        <article class="card card--highlight">
+          <div class="card__icon">§</div>
+          <h3>Conformidade e Direito Digital</h3>
+          <p>Adequação à LGPD, políticas de privacidade, termos de uso e revisão de fluxos de dados — feitos por quem também escreve o código. <strong>Nosso diferencial.</strong></p>
+        </article>
+        <article class="card">
+          <div class="card__icon">⛭</div>
+          <h3>Suporte técnico</h3>
+          <p>Manutenção de computadores e notebooks, instalação de software, formatação e impressoras, para você ou sua empresa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="diferencial" class="section">
+    <div class="container">
+      <p class="eyebrow">O diferencial</p>
+      <h2>Engenharia que entende de lei.<br>Conformidade que sabe programar.</h2>
+      <p class="section__lead">
+        A maioria dos desenvolvedores não domina conformidade — e a maioria de quem domina
+        conformidade não implementa. A WN Labs fica no cruzamento: quem projeta o seu sistema
+        é quem responde pela adequação dele à LGPD, na mesma conversa.
+      </p>
+      <div class="banner">
+        <p>Software correto tecnicamente <strong>e</strong> juridicamente — desde o primeiro commit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="section section--soft">
+    <div class="container">
+      <p class="eyebrow">Sobre</p>
+      <h2>Quem está por trás</h2>
+      <p class="section__lead">
+        A WN Labs é liderada por <strong>Wesley Neiva</strong> — analista e desenvolvedor de sistemas,
+        pós-graduado em <strong>Direito Digital</strong> e em <strong>Engenharia de Software</strong>.
+        Atua como desenvolvedor, tester, analista de sistemas e analista de dados.
+      </p>
+      <div class="cards cards--three">
+        <article class="card">
+          <h3>Missão</h3>
+          <p>Construir tecnologia que resolve o problema do cliente com segurança técnica e jurídica.</p>
+        </article>
+        <article class="card">
+          <h3>Visão</h3>
+          <p>Ser referência em software e dados com conformidade nativa, não como remendo posterior.</p>
+        </article>
+        <article class="card">
+          <h3>Valores</h3>
+          <p>Transparência, responsabilidade sobre o que entregamos, privacidade por padrão e melhoria contínua.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section">
+    <div class="container">
+      <p class="eyebrow">Contato</p>
+      <h2>Vamos conversar sobre o seu projeto</h2>
+      <div class="contact">
+        <form class="contact__form" (ngSubmit)="submit()" #f="ngForm">
+          <label>
+            Nome
+            <input type="text" name="name" [(ngModel)]="form.name" required maxlength="120" autocomplete="name">
+          </label>
+          <label>
+            E-mail
+            <input type="email" name="email" [(ngModel)]="form.email" required maxlength="160" autocomplete="email">
+          </label>
+          <label>
+            Mensagem
+            <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="4000"></textarea>
+          </label>
+          <button class="btn btn--primary" type="submit" [disabled]="f.invalid || status() === 'sending'">
+            {{ status() === 'sending' ? 'Enviando…' : 'Enviar mensagem' }}
+          </button>
+          @if (status() === 'sent') {
+            <p class="form-msg form-msg--ok">Mensagem enviada! Retornamos em breve.</p>
+          }
+          @if (status() === 'error') {
+            <p class="form-msg form-msg--err">Não foi possível enviar. Tente pelo WhatsApp ou e-mail abaixo.</p>
+          }
+        </form>
+        <div class="contact__aside">
+          <a [href]="whatsappUrl" target="_blank" rel="noopener" class="btn btn--whatsapp">WhatsApp (21) 99574-2789</a>
+          <a href="mailto:contato@wnlabs.com.br" class="btn btn--ghost">contato&#64;wnlabs.com.br</a>
+          <p class="contact__note">Respondemos em horário comercial. Para suporte técnico, o WhatsApp é o caminho mais rápido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <img src="assets/wnlabs-mono-branco.svg" alt="wnlabs" height="28">
+    <nav class="footer__nav">
+      <a href="#servicos">Serviços</a>
+      <a href="#diferencial">Diferencial</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <p>© {{ year }} WN Labs · Soluções em tecnologia · wnlabs.com.br</p>
+  </div>
+</footer>

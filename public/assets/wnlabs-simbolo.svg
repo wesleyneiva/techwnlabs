@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.0 96.0" width="96.0" height="96.0" role="img" aria-label="WN Labs">
+  <title>WN Labs</title>
+  <rect x="2.5" y="2.5" width="91.0" height="91.0" rx="19.5" fill="none" stroke="#1F6FC4" stroke-width="5.0"/>
+  <path d="M25.0 29.0L50.0 48.0L25.0 67.0" fill="none" stroke="#1F6FC4" stroke-width="8.0" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M56.0 67.0H76.0" fill="none" stroke="#1F6FC4" stroke-width="8.0" stroke-linecap="round"/>
+</svg>

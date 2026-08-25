@@ -1,0 +1,35 @@
+:root {
+  --brand: #1F6FC4;
+  --brand-dark: #175495;
+  --ink: #12161C;
+  --ink-72: rgba(18, 22, 28, 0.72);
+  --ink-56: rgba(18, 22, 28, 0.56);
+  --bg: #ffffff;
+  --bg-soft: #f4f7fb;
+  --border: #e3e9f1;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+img { max-width: 100%; }
+
+a { color: var(--brand); }
