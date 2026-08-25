@@ -3,6 +3,7 @@
   "name": "techwnlabs",
   "main": "worker/index.js",
   "compatibility_date": "2026-08-01",
+  "keep_vars": true,
   "assets": {
     "directory": "./dist/techwnlabs/browser",
     "binding": "ASSETS",
