@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
@@ -7,6 +7,7 @@ type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
   selector: 'app-root',
   imports: [FormsModule],
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.scss',
 })
 export class App {

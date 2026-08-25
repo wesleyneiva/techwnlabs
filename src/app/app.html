@@ -1,7 +1,7 @@
 <header class="header">
   <div class="container header__inner">
     <a href="#" class="header__brand" (click)="closeMenu()">
-      <img src="assets/wnlabs-principal.svg" alt="wnlabs — soluções em tecnologia" height="36">
+      <img src="assets/wnlabs-principal.svg" alt="wnlabs — soluções em tecnologia" height="34">
     </a>
     <button class="header__toggle" (click)="toggleMenu()" aria-label="Abrir menu" [attr.aria-expanded]="menuOpen()">
       <span></span><span></span><span></span>
@@ -17,25 +17,72 @@
 
 <main>
   <section class="hero">
-    <div class="container">
-      <span class="badge">● Software · Dados · IA · Conformidade</span>
-      <h1>Sistemas e dados <span class="accent">com conformidade</span> de ponta a ponta</h1>
-      <p class="hero__lead">
-        A WN Labs projeta software sob demanda, análise de dados e soluções com IA —
-        e responde pela adequação jurídica do que constrói. Engenharia e Direito Digital
-        na mesma conversa.
-      </p>
-      <div class="hero__actions">
-        <a href="#contato" class="btn btn--primary">Fale conosco →</a>
-        <a [href]="whatsappUrl" target="_blank" rel="noopener" class="btn btn--ghost">WhatsApp</a>
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="badge"><span class="badge__dot"></span> Software · Dados · IA · Conformidade</span>
+        <h1>Sistemas e dados <span class="accent">com conformidade</span> de ponta a ponta</h1>
+        <p class="hero__lead">
+          A WN Labs projeta software sob demanda, análise de dados e soluções com IA —
+          e responde pela adequação jurídica do que constrói. Engenharia e Direito Digital
+          na mesma conversa.
+        </p>
+        <ul class="hero__checks">
+          <li>Software sob demanda</li>
+          <li>Dados e IA</li>
+          <li>LGPD desde o projeto</li>
+        </ul>
+        <div class="hero__actions">
+          <a href="#contato" class="btn btn--primary btn--lg">Fale conosco →</a>
+          <a href="#servicos" class="btn btn--ghost btn--lg">Ver serviços</a>
+        </div>
+      </div>
+
+      <div class="hero__mock" aria-hidden="true">
+        <div class="mock">
+          <div class="mock__bar">
+            <span class="mock__dot mock__dot--r"></span>
+            <span class="mock__dot mock__dot--y"></span>
+            <span class="mock__dot mock__dot--g"></span>
+            <span class="mock__url">wnlabs.com.br</span>
+          </div>
+          <div class="mock__body">
+            <aside class="mock__side">
+              <div class="mock__logo"><img src="assets/wnlabs-simbolo.svg" alt="" height="22"></div>
+              <div class="mock__navitem mock__navitem--active">Painel</div>
+              <div class="mock__navitem">Relatórios</div>
+              <div class="mock__navitem">Dados</div>
+              <div class="mock__navitem">LGPD</div>
+            </aside>
+            <div class="mock__main">
+              <p class="mock__title">Visão geral</p>
+              <div class="mock__stats">
+                <div class="mock__stat"><strong>99,9%</strong><span>disponibilidade</span></div>
+                <div class="mock__stat"><strong>+38%</strong><span>eficiência</span></div>
+              </div>
+              <div class="mock__chart">
+                <span style="height: 34%"></span><span style="height: 52%"></span>
+                <span style="height: 44%"></span><span style="height: 68%"></span>
+                <span style="height: 58%"></span><span style="height: 82%"></span>
+                <span style="height: 74%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__float">
+          <span class="hero__floaticon">✓</span>
+          <div><strong>Conforme à LGPD</strong><span>desde o primeiro commit</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="servicos" class="section section--soft">
     <div class="container">
-      <p class="eyebrow">Serviços</p>
-      <h2>O que a WN Labs entrega</h2>
+      <div class="section__head">
+        <p class="eyebrow">Serviços</p>
+        <h2>Tudo o que sua operação precisa, <span class="accent">em um só lugar</span></h2>
+        <p class="section__lead">Do levantamento de requisitos ao relatório final — com a adequação jurídica embutida no processo, não como etapa extra.</p>
+      </div>
       <div class="cards">
         <article class="card">
           <div class="card__icon">&lt;/&gt;</div>
@@ -55,7 +102,8 @@
         <article class="card card--highlight">
           <div class="card__icon">§</div>
           <h3>Conformidade e Direito Digital</h3>
-          <p>Adequação à LGPD, políticas de privacidade, termos de uso e revisão de fluxos de dados — feitos por quem também escreve o código. <strong>Nosso diferencial.</strong></p>
+          <p>Adequação à LGPD, políticas de privacidade, termos de uso e revisão de fluxos de dados — feitos por quem também escreve o código.</p>
+          <span class="tag">Diferencial</span>
         </article>
         <article class="card">
           <div class="card__icon">⛭</div>
@@ -68,38 +116,47 @@
 
   <section id="diferencial" class="section">
     <div class="container">
-      <p class="eyebrow">O diferencial</p>
-      <h2>Engenharia que entende de lei.<br>Conformidade que sabe programar.</h2>
-      <p class="section__lead">
-        A maioria dos desenvolvedores não domina conformidade — e a maioria de quem domina
-        conformidade não implementa. A WN Labs fica no cruzamento: quem projeta o seu sistema
-        é quem responde pela adequação dele à LGPD, na mesma conversa.
-      </p>
+      <div class="section__head">
+        <p class="eyebrow">O diferencial</p>
+        <h2>Engenharia que entende de lei. <span class="accent">Conformidade que sabe programar.</span></h2>
+        <p class="section__lead">
+          A maioria dos desenvolvedores não domina conformidade — e a maioria de quem domina
+          conformidade não implementa. A WN Labs fica no cruzamento: quem projeta o seu sistema
+          é quem responde pela adequação dele à LGPD, na mesma conversa.
+        </p>
+      </div>
       <div class="banner">
-        <p>Software correto tecnicamente <strong>e</strong> juridicamente — desde o primeiro commit.</p>
+        <h3>Software correto tecnicamente e juridicamente</h3>
+        <p>Privacidade por padrão, termos e políticas alinhados ao produto, e um único responsável pelas duas pontas.</p>
+        <a href="#contato" class="btn btn--inverse">Conversar sobre o seu projeto →</a>
       </div>
     </div>
   </section>
 
   <section id="sobre" class="section section--soft">
     <div class="container">
-      <p class="eyebrow">Sobre</p>
-      <h2>Quem está por trás</h2>
-      <p class="section__lead">
-        A WN Labs é liderada por <strong>Wesley Neiva</strong> — analista e desenvolvedor de sistemas,
-        pós-graduado em <strong>Direito Digital</strong> e em <strong>Engenharia de Software</strong>.
-        Atua como desenvolvedor, tester, analista de sistemas e analista de dados.
-      </p>
+      <div class="section__head">
+        <p class="eyebrow">Sobre</p>
+        <h2>Quem está por trás</h2>
+        <p class="section__lead">
+          A WN Labs é liderada por <strong>Wesley Neiva</strong> — analista e desenvolvedor de sistemas,
+          pós-graduado em <strong>Direito Digital</strong> e em <strong>Engenharia de Software</strong>.
+          Atua como desenvolvedor, tester, analista de sistemas e analista de dados.
+        </p>
+      </div>
       <div class="cards cards--three">
         <article class="card">
+          <div class="card__icon">◎</div>
           <h3>Missão</h3>
           <p>Construir tecnologia que resolve o problema do cliente com segurança técnica e jurídica.</p>
         </article>
         <article class="card">
+          <div class="card__icon">◇</div>
           <h3>Visão</h3>
           <p>Ser referência em software e dados com conformidade nativa, não como remendo posterior.</p>
         </article>
         <article class="card">
+          <div class="card__icon">♥</div>
           <h3>Valores</h3>
           <p>Transparência, responsabilidade sobre o que entregamos, privacidade por padrão e melhoria contínua.</p>
         </article>
@@ -109,36 +166,39 @@
 
   <section id="contato" class="section">
     <div class="container">
-      <p class="eyebrow">Contato</p>
-      <h2>Vamos conversar sobre o seu projeto</h2>
+      <div class="section__head">
+        <p class="eyebrow">Contato</p>
+        <h2>Vamos conversar sobre <span class="accent">o seu projeto</span></h2>
+        <p class="section__lead">Conte o que você precisa — retornamos em horário comercial.</p>
+      </div>
       <div class="contact">
         <form class="contact__form" (ngSubmit)="submit()" #f="ngForm">
           <label>
             Nome
-            <input type="text" name="name" [(ngModel)]="form.name" required maxlength="120" autocomplete="name">
+            <input type="text" name="name" [(ngModel)]="form.name" required maxlength="120" autocomplete="name" placeholder="Seu nome">
           </label>
           <label>
             E-mail
-            <input type="email" name="email" [(ngModel)]="form.email" required maxlength="160" autocomplete="email">
+            <input type="email" name="email" [(ngModel)]="form.email" required maxlength="160" autocomplete="email" placeholder="voce@empresa.com.br">
           </label>
           <label>
             Mensagem
-            <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="4000"></textarea>
+            <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="4000" placeholder="Conte rapidamente o que você precisa"></textarea>
           </label>
-          <button class="btn btn--primary" type="submit" [disabled]="f.invalid || status() === 'sending'">
+          <button class="btn btn--primary btn--lg" type="submit" [disabled]="f.invalid || status() === 'sending'">
             {{ status() === 'sending' ? 'Enviando…' : 'Enviar mensagem' }}
           </button>
           @if (status() === 'sent') {
             <p class="form-msg form-msg--ok">Mensagem enviada! Retornamos em breve.</p>
           }
           @if (status() === 'error') {
-            <p class="form-msg form-msg--err">Não foi possível enviar. Tente pelo WhatsApp ou e-mail abaixo.</p>
+            <p class="form-msg form-msg--err">Não foi possível enviar. Tente pelo WhatsApp ou e-mail ao lado.</p>
           }
         </form>
         <div class="contact__aside">
-          <a [href]="whatsappUrl" target="_blank" rel="noopener" class="btn btn--whatsapp">WhatsApp (21) 99574-2789</a>
-          <a href="mailto:contato@wnlabs.com.br" class="btn btn--ghost">contato&#64;wnlabs.com.br</a>
-          <p class="contact__note">Respondemos em horário comercial. Para suporte técnico, o WhatsApp é o caminho mais rápido.</p>
+          <a [href]="whatsappUrl" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">WhatsApp (21) 99574-2789</a>
+          <a href="mailto:contato@wnlabs.com.br" class="btn btn--ghost btn--lg">contato&#64;wnlabs.com.br</a>
+          <p class="contact__note">Para suporte técnico, o WhatsApp é o caminho mais rápido.</p>
         </div>
       </div>
     </div>
@@ -147,7 +207,7 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <img src="assets/wnlabs-mono-branco.svg" alt="wnlabs" height="28">
+    <img src="assets/wnlabs-principal.svg" alt="wnlabs" height="30">
     <nav class="footer__nav">
       <a href="#servicos">Serviços</a>
       <a href="#diferencial">Diferencial</a>
