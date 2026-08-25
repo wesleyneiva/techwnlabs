@@ -27,6 +27,10 @@ export class App {
     this.menuOpen.set(false);
   }
 
+  closeModal(): void {
+    this.status.set('idle');
+  }
+
   async submit(): Promise<void> {
     if (this.status() === 'sending') return;
     this.status.set('sending');
