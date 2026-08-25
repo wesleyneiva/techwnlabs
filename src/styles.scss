@@ -1,12 +1,12 @@
 :root {
-  --brand: #1F6FC4;
-  --brand-dark: #175495;
-  --ink: #12161C;
-  --ink-72: rgba(18, 22, 28, 0.72);
-  --ink-56: rgba(18, 22, 28, 0.56);
+  --brand: #E8722A;        /* acento: áreas, ícones, traços */
+  --brand-dark: #C25518;   /* texto/links sobre fundo claro (regra dos dois laranjas) */
+  --ink: #23272F;          /* grafite */
+  --ink-72: rgba(35, 39, 47, 0.72);
+  --ink-56: rgba(35, 39, 47, 0.56);
   --bg: #ffffff;
-  --bg-soft: #f4f7fb;
-  --border: #e3e9f1;
+  --bg-soft: #F6F4F1;      /* papel */
+  --border: #e7e2da;
   --radius: 16px;
 }
 
@@ -32,4 +32,4 @@ h1, h2, h3 {
 
 img { max-width: 100%; }
 
-a { color: var(--brand); }
+a { color: var(--brand-dark); }
