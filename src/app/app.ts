@@ -12,7 +12,7 @@ type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
 })
 export class App {
   readonly year = new Date().getFullYear();
-  readonly whatsappUrl = 'https://wa.me/5521995742789?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20WN%20Labs';
+  readonly whatsappUrl = 'https://wa.me/5551998369893?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20WN%20Labs';
 
   menuOpen = signal(false);
   status = signal<FormStatus>('idle');
