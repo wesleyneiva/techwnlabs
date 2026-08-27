@@ -24,7 +24,7 @@ O repositório está conectado ao Worker `techwnlabs`. Configuração:
 
 - Só `POST` com `Content-Type: application/json` e `Origin`/`Referer` de `tech.wnlabs.com.br` (ou localhost em dev)
 - Token do Turnstile validado no worker antes de qualquer chamada à Mailjet
-- Remetente, destinatário, assunto e reply-to fixos no código — nada do usuário controla cabeçalhos
+- Remetente, destinatário e assunto fixos no código; o reply-to usa o e-mail do cliente, validado e sanitizado antes de entrar no header
 - Limites: nome 100, e-mail 150, telefone 20, mensagem 2000 caracteres (rejeita acima)
 - Honeypot (campo `company`): preenchido → descarte silencioso
 - Rate limit: 3 envios por IP por hora (KV `RATE_LIMIT`), acima disso 429
