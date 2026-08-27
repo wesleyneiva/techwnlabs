@@ -1,0 +1,23 @@
+{
+  "name": "WN Labs — Soluções em tecnologia",
+  "short_name": "wnlabs",
+  "description": "Desenvolvimento de software, dados e IA com conformidade e Direito Digital.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F6F4F1",
+  "theme_color": "#23272F",
+  "icons": [
+    {
+      "src": "/assets/wnlabs-avatar-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/wnlabs-avatar-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

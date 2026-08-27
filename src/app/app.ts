@@ -14,10 +14,13 @@ export class App {
   readonly year = new Date().getFullYear();
   readonly whatsappUrl = 'https://wa.me/5551998369893?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20WN%20Labs';
 
+  // Site key do Turnstile (pública); o widget cobre tech.wnlabs.com.br e localhost.
+  readonly turnstileSiteKey = '0x4AAAAAAEeDbfClVmfl0zAK';
+
   menuOpen = signal(false);
   status = signal<FormStatus>('idle');
 
-  form = { name: '', email: '', phone: '', message: '' };
+  form = { name: '', email: '', phone: '', message: '', company: '' };
 
   toggleMenu(): void {
     this.menuOpen.update((v) => !v);
@@ -35,14 +38,16 @@ export class App {
     if (this.status() === 'sending') return;
     this.status.set('sending');
     try {
+      const turnstile = (window as { turnstile?: { getResponse(): string; reset(): void } }).turnstile;
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.form),
+        body: JSON.stringify({ ...this.form, turnstileToken: turnstile?.getResponse() ?? '' }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this.status.set('sent');
-      this.form = { name: '', email: '', phone: '', message: '' };
+      this.form = { name: '', email: '', phone: '', message: '', company: '' };
+      turnstile?.reset();
     } catch {
       this.status.set('error');
     }

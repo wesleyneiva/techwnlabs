@@ -179,11 +179,11 @@
         <form class="contact__form" (ngSubmit)="submit()" #f="ngForm">
           <label>
             Nome
-            <input type="text" name="name" [(ngModel)]="form.name" required maxlength="120" autocomplete="name" placeholder="Seu nome">
+            <input type="text" name="name" [(ngModel)]="form.name" required maxlength="100" autocomplete="name" placeholder="Seu nome">
           </label>
           <label>
             E-mail
-            <input type="email" name="email" [(ngModel)]="form.email" required maxlength="160" autocomplete="email" placeholder="voce@empresa.com.br">
+            <input type="email" name="email" [(ngModel)]="form.email" required maxlength="150" autocomplete="email" placeholder="voce@empresa.com.br">
           </label>
           <label>
             Telefone / WhatsApp
@@ -191,8 +191,14 @@
           </label>
           <label>
             Mensagem
-            <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="4000" placeholder="Conte rapidamente o que você precisa"></textarea>
+            <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="2000" placeholder="Conte rapidamente o que você precisa"></textarea>
           </label>
+          <!-- Honeypot: invisível para pessoas; bots que preencherem são descartados no worker -->
+          <label class="hp-field" aria-hidden="true">
+            Empresa
+            <input type="text" name="company" [(ngModel)]="form.company" tabindex="-1" autocomplete="off">
+          </label>
+          <div class="cf-turnstile" [attr.data-sitekey]="turnstileSiteKey" data-theme="light"></div>
           <button class="btn btn--primary btn--lg" type="submit" [disabled]="f.invalid || status() === 'sending'">
             {{ status() === 'sending' ? 'Enviando…' : 'Enviar mensagem' }}
           </button>

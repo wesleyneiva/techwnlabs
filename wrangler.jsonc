@@ -7,6 +7,10 @@
   "routes": [
     { "pattern": "tech.wnlabs.com.br", "custom_domain": true }
   ],
+  // Rate limit do /api/contact
+  "kv_namespaces": [
+    { "binding": "RATE_LIMIT", "id": "22c38ca8d6fb4905b897b5f6a076657b" }
+  ],
   "assets": {
     "directory": "./dist/techwnlabs/browser",
     "binding": "ASSETS",

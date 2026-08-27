@@ -1,6 +1,19 @@
-# techwnlabs
+# wnlabs — site institucional
 
-Site institucional da WN Labs — `tech.wnlabs.com.br`. Angular 22 estático, hospedado como Cloudflare Worker (plano free) com assets estáticos; formulário de contato em `worker/index.js` enviando via Mailjet.
+Site da [WN Labs](https://tech.wnlabs.com.br) — desenvolvimento de software, dados e IA com conformidade e Direito Digital.
+
+<!-- Adicionar screenshot da home aqui quando o site estiver no ar:
+![Home do site](docs/screenshot.png)
+-->
+
+**Site:** https://tech.wnlabs.com.br
+
+## Stack
+
+- [Angular 22](https://angular.dev) — página única, estática
+- SCSS, sem framework de UI
+- Cloudflare Workers para hospedagem e API de contato
+- Tipografia [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) + JetBrains Mono
 
 ## Desenvolvimento
 
@@ -11,21 +24,13 @@ npm run build    # saída em dist/techwnlabs/browser
 npx wrangler dev # site + /api/contact locais, após o build
 ```
 
-## Deploy (Workers Builds)
+Instruções de deploy e operação em [`docs/DEPLOY.md`](docs/DEPLOY.md).
 
-O repositório já está conectado ao Worker `techwnlabs`. Configuração:
+## Marca
 
-1. **Build** (Configurações → Build do Worker):
-   - Build command: `npm run build`
-   - Deploy command: `npx wrangler deploy`
-2. **Secrets** (Configurações → Variables and secrets, tipo Secret):
-   - `MAILJET_API_KEY`
-   - `MAILJET_SECRET_KEY`
-   (chaves da conta Mailjet já usada no envio de e-mail do domínio)
-3. **Domínio**: aba Domínios → Adicionar domínio → `tech.wnlabs.com.br`. Antes, exporte o DNS da zona `wnlabs.com.br` (DNS → Exportar) e confira depois que os MX e o TXT de SPF continuam intactos — o e-mail em produção depende deles.
+- Wordmark sempre em minúsculas: `wnlabs`
+- Paleta: grafite `#23272F` (base), laranja `#E8722A` (acento), laranja escuro `#C25518` (texto sobre fundo claro), papel `#F6F4F1`
+- Regra de contraste: `#E8722A` como texto só sobre fundo escuro; sobre fundo claro, texto e links usam `#C25518`
+- Regras completas em `wnlabs-manual-da-marca.md`, no repositório de assets
 
-## Observações
-
-- `public/assets/wnlabs-avatar-256.png` fica acessível em `https://tech.wnlabs.com.br/assets/wnlabs-avatar-256.png`. A assinatura de e-mail apontava para o apex (`wnlabs.com.br/assets/...`) — atualizar a assinatura para a URL do subdomínio, ou criar um redirect no apex.
-- Marca: wordmark sempre minúsculo (`wnlabs`), azul `#1F6FC4`, tipografia Space Grotesk. Regras completas em `wnlabs-manual-da-marca.md` no repositório de assets.
-- Não mencionar redes/wi-fi/infraestrutura em nenhum texto do site.
+Não mencionar redes/wi-fi/infraestrutura em nenhum texto do site.
