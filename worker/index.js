@@ -113,8 +113,10 @@ async function handleContact(request, env) {
   // Link wa.me pronto para responder com um toque; DDI 55 se vier só DDD+número.
   const waNumber = phoneDigits.length <= 11 ? `55${phoneDigits}` : phoneDigits;
 
-  // b) remetente, destinatário, assunto e reply-to FIXOS. O que o usuário
-  // digitou entra somente no corpo, higienizado (sem caracteres de controle).
+  // b) remetente, destinatário e assunto FIXOS. O reply-to usa o e-mail do
+  // cliente (já validado por regex e tamanho) para o "Responder" funcionar —
+  // não participa de SPF/DKIM nem desvia o destino. O restante do que o
+  // usuário digitou entra somente no corpo, higienizado.
   const body = [
     `Nome: ${sanitize(name)}`,
     `E-mail: ${sanitize(email)}`,
@@ -136,7 +138,7 @@ async function handleContact(request, env) {
         {
           From: { Email: 'contato@wnlabs.com.br', Name: 'Site WN Labs' },
           To: [{ Email: 'contato@wnlabs.com.br', Name: 'WN Labs' }],
-          ReplyTo: { Email: 'contato@wnlabs.com.br', Name: 'Site WN Labs' },
+          ReplyTo: { Email: email, Name: sanitize(name) },
           Subject: 'Contato pelo site',
           TextPart: body,
         },
