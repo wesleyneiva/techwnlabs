@@ -4,17 +4,20 @@
       <img src="assets/wnlabs-simbolo.svg" alt="" height="40">
       <span class="header__brandtext">
         <strong>wnlabs</strong>
-        <small>Soluções em tecnologia</small>
+        <small>{{ t().descriptor }}</small>
       </span>
     </a>
-    <button class="header__toggle" (click)="toggleMenu()" aria-label="Abrir menu" [attr.aria-expanded]="menuOpen()">
+    <button class="header__toggle" (click)="toggleMenu()" [attr.aria-label]="t().nav.openMenu" [attr.aria-expanded]="menuOpen()">
       <span></span><span></span><span></span>
     </button>
     <nav class="header__nav" [class.header__nav--open]="menuOpen()">
-      <a href="#servicos" (click)="closeMenu()">Serviços</a>
-      <a href="#diferencial" (click)="closeMenu()">Diferencial</a>
-      <a href="#sobre" (click)="closeMenu()">Sobre</a>
-      <a href="#contato" class="btn btn--primary btn--sm" (click)="closeMenu()">Fale conosco</a>
+      <a href="#servicos" (click)="closeMenu()">{{ t().nav.services }}</a>
+      <a href="#diferencial" (click)="closeMenu()">{{ t().nav.edge }}</a>
+      <a href="#sobre" (click)="closeMenu()">{{ t().nav.about }}</a>
+      <button type="button" class="lang-toggle" (click)="toggleLang()" [attr.aria-label]="lang() === 'pt' ? 'Switch to English' : 'Mudar para português'">
+        {{ lang() === 'pt' ? 'EN' : 'PT' }}
+      </button>
+      <a href="#contato" class="btn btn--primary btn--sm" (click)="closeMenu()">{{ t().nav.cta }}</a>
     </nav>
   </div>
 </header>
@@ -23,21 +26,17 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__copy">
-        <span class="badge"><span class="badge__dot"></span> Software · Dados · IA · Conformidade</span>
-        <h1>Sistemas e dados <span class="accent">com conformidade</span> de ponta a ponta</h1>
-        <p class="hero__lead">
-          A WN Labs projeta software sob demanda, análise de dados e soluções com IA —
-          e responde pela adequação jurídica do que constrói. Engenharia e Direito Digital
-          na mesma conversa.
-        </p>
+        <span class="badge"><span class="badge__dot"></span> {{ t().hero.badge }}</span>
+        <h1>{{ t().hero.h1a }}<span class="accent">{{ t().hero.h1accent }}</span>{{ t().hero.h1b }}</h1>
+        <p class="hero__lead">{{ t().hero.lead }}</p>
         <ul class="hero__checks">
-          <li>Software sob demanda</li>
-          <li>Dados e IA</li>
-          <li>LGPD desde o projeto</li>
+          @for (check of t().hero.checks; track $index) {
+            <li>{{ check }}</li>
+          }
         </ul>
         <div class="hero__actions">
-          <a href="#contato" class="btn btn--primary btn--lg">Fale conosco →</a>
-          <a href="#servicos" class="btn btn--ghost btn--lg">Ver serviços</a>
+          <a href="#contato" class="btn btn--primary btn--lg">{{ t().hero.ctaPrimary }}</a>
+          <a href="#servicos" class="btn btn--ghost btn--lg">{{ t().hero.ctaSecondary }}</a>
         </div>
       </div>
 
@@ -52,16 +51,15 @@
           <div class="mock__body">
             <aside class="mock__side">
               <div class="mock__logo"><img src="assets/wnlabs-simbolo.svg" alt="" height="22"></div>
-              <div class="mock__navitem mock__navitem--active">Painel</div>
-              <div class="mock__navitem">Relatórios</div>
-              <div class="mock__navitem">Dados</div>
-              <div class="mock__navitem">LGPD</div>
+              @for (item of t().hero.mockNav; track $index) {
+                <div class="mock__navitem" [class.mock__navitem--active]="$index === 0">{{ item }}</div>
+              }
             </aside>
             <div class="mock__main">
-              <p class="mock__title">Visão geral</p>
+              <p class="mock__title">{{ t().hero.mockTitle }}</p>
               <div class="mock__stats">
-                <div class="mock__stat"><strong>99,9%</strong><span>disponibilidade</span></div>
-                <div class="mock__stat"><strong>+38%</strong><span>eficiência</span></div>
+                <div class="mock__stat"><strong>99,9%</strong><span>{{ t().hero.mockStat1 }}</span></div>
+                <div class="mock__stat"><strong>+38%</strong><span>{{ t().hero.mockStat2 }}</span></div>
               </div>
               <div class="mock__chart">
                 <span style="height: 34%"></span><span style="height: 52%"></span>
@@ -74,7 +72,7 @@
         </div>
         <div class="hero__float">
           <span class="hero__floaticon">✓</span>
-          <div><strong>Conforme à LGPD</strong><span>desde o primeiro commit</span></div>
+          <div><strong>{{ t().hero.floatTitle }}</strong><span>{{ t().hero.floatSub }}</span></div>
         </div>
       </div>
     </div>
@@ -83,36 +81,36 @@
   <section id="servicos" class="section section--soft">
     <div class="container">
       <div class="section__head">
-        <p class="eyebrow">Serviços</p>
-        <h2>Tudo o que sua operação precisa, <span class="accent">em um só lugar</span></h2>
-        <p class="section__lead">Do levantamento de requisitos ao relatório final — com a adequação jurídica embutida no processo, não como etapa extra.</p>
+        <p class="eyebrow">{{ t().services.eyebrow }}</p>
+        <h2>{{ t().services.h2a }}<span class="accent">{{ t().services.h2accent }}</span></h2>
+        <p class="section__lead">{{ t().services.lead }}</p>
       </div>
       <div class="cards">
         <article class="card">
           <div class="card__icon">&lt;/&gt;</div>
-          <h3>Desenvolvimento de software</h3>
-          <p>Sistemas web sob demanda, do levantamento de requisitos à publicação. Aplicações pensadas para o seu processo, não o contrário.</p>
+          <h3>{{ t().services.dev.title }}</h3>
+          <p>{{ t().services.dev.text }}</p>
         </article>
         <article class="card">
           <div class="card__icon">▦</div>
-          <h3>Dados e IA</h3>
-          <p>Análise e modelagem de dados, relatórios e automações com inteligência artificial que transformam informação em decisão.</p>
+          <h3>{{ t().services.data.title }}</h3>
+          <p>{{ t().services.data.text }}</p>
         </article>
         <article class="card">
           <div class="card__icon">✓</div>
-          <h3>Qualidade e testes</h3>
-          <p>Planejamento e execução de testes de software. Menos bug em produção, mais confiança em cada entrega.</p>
+          <h3>{{ t().services.qa.title }}</h3>
+          <p>{{ t().services.qa.text }}</p>
         </article>
         <article class="card card--highlight">
           <div class="card__icon">§</div>
-          <h3>Conformidade e Direito Digital</h3>
-          <p>Adequação à LGPD, políticas de privacidade, termos de uso e revisão de fluxos de dados — feitos por quem também escreve o código.</p>
-          <span class="tag">Diferencial</span>
+          <h3>{{ t().services.law.title }}</h3>
+          <p>{{ t().services.law.text }}</p>
+          <span class="tag">{{ t().services.law.tag }}</span>
         </article>
         <article class="card">
           <div class="card__icon">⛭</div>
-          <h3>Suporte técnico</h3>
-          <p>Manutenção de computadores e notebooks, instalação de software, formatação e impressoras, para você ou sua empresa.</p>
+          <h3>{{ t().services.support.title }}</h3>
+          <p>{{ t().services.support.text }}</p>
         </article>
       </div>
     </div>
@@ -121,18 +119,14 @@
   <section id="diferencial" class="section">
     <div class="container">
       <div class="section__head">
-        <p class="eyebrow">O diferencial</p>
-        <h2>Engenharia que entende de lei. <span class="accent">Conformidade que sabe programar.</span></h2>
-        <p class="section__lead">
-          A maioria dos desenvolvedores não domina conformidade — e a maioria de quem domina
-          conformidade não implementa. A WN Labs fica no cruzamento: quem projeta o seu sistema
-          é quem responde pela adequação dele à LGPD, na mesma conversa.
-        </p>
+        <p class="eyebrow">{{ t().edge.eyebrow }}</p>
+        <h2>{{ t().edge.h2a }}<span class="accent">{{ t().edge.h2accent }}</span></h2>
+        <p class="section__lead">{{ t().edge.lead }}</p>
       </div>
       <div class="banner">
-        <h3>Software correto tecnicamente e juridicamente</h3>
-        <p>Privacidade por padrão, termos e políticas alinhados ao produto, e um único responsável pelas duas pontas.</p>
-        <a href="#contato" class="btn btn--inverse">Conversar sobre o seu projeto →</a>
+        <h3>{{ t().edge.bannerTitle }}</h3>
+        <p>{{ t().edge.bannerText }}</p>
+        <a href="#contato" class="btn btn--inverse">{{ t().edge.bannerCta }}</a>
       </div>
     </div>
   </section>
@@ -140,29 +134,26 @@
   <section id="sobre" class="section section--soft">
     <div class="container">
       <div class="section__head">
-        <p class="eyebrow">Sobre</p>
-        <h2>Quem está por trás</h2>
-        <p class="section__lead">
-          A WN Labs é liderada por <strong>Wesley Neiva</strong> — analista e desenvolvedor de sistemas,
-          pós-graduado em <strong>Direito Digital</strong> e em <strong>Engenharia de Software</strong>.
-          Atua como desenvolvedor, tester, analista de sistemas e analista de dados.
-        </p>
+        <p class="eyebrow">{{ t().about.eyebrow }}</p>
+        <h2>{{ t().about.h2 }}</h2>
+        <!-- innerHTML é seguro aqui: o texto vem do nosso dicionário estático (i18n.ts), nunca de entrada de usuário -->
+        <p class="section__lead" [innerHTML]="t().about.lead"></p>
       </div>
       <div class="cards cards--three">
         <article class="card">
           <div class="card__icon">◎</div>
-          <h3>Missão</h3>
-          <p>Construir tecnologia que resolve o problema do cliente com segurança técnica e jurídica.</p>
+          <h3>{{ t().about.mission.title }}</h3>
+          <p>{{ t().about.mission.text }}</p>
         </article>
         <article class="card">
           <div class="card__icon">◇</div>
-          <h3>Visão</h3>
-          <p>Ser referência em software e dados com conformidade nativa, não como remendo posterior.</p>
+          <h3>{{ t().about.vision.title }}</h3>
+          <p>{{ t().about.vision.text }}</p>
         </article>
         <article class="card">
           <div class="card__icon">♥</div>
-          <h3>Valores</h3>
-          <p>Transparência, responsabilidade sobre o que entregamos, privacidade por padrão e melhoria contínua.</p>
+          <h3>{{ t().about.values.title }}</h3>
+          <p>{{ t().about.values.text }}</p>
         </article>
       </div>
     </div>
@@ -171,39 +162,43 @@
   <section id="contato" class="section">
     <div class="container">
       <div class="section__head">
-        <p class="eyebrow">Contato</p>
-        <h2>Vamos conversar sobre <span class="accent">o seu projeto</span></h2>
-        <p class="section__lead">Conte o que você precisa — retornamos em horário comercial.</p>
+        <p class="eyebrow">{{ t().contact.eyebrow }}</p>
+        <h2>{{ t().contact.h2a }}<span class="accent">{{ t().contact.h2accent }}</span></h2>
+        <p class="section__lead">{{ t().contact.lead }}</p>
       </div>
       <div class="contact">
         <form class="contact__form" (ngSubmit)="submit()" #f="ngForm">
           <label>
-            Nome
-            <input type="text" name="name" [(ngModel)]="form.name" required maxlength="100" autocomplete="name" placeholder="Seu nome">
+            {{ t().contact.name }}
+            <input type="text" name="name" [(ngModel)]="form.name" required maxlength="100" autocomplete="name" [placeholder]="t().contact.namePh">
           </label>
           <label>
-            E-mail
-            <input type="email" name="email" [(ngModel)]="form.email" required maxlength="150" autocomplete="email" placeholder="voce@empresa.com.br">
+            {{ t().contact.email }}
+            <input type="email" name="email" [(ngModel)]="form.email" required maxlength="150" autocomplete="email" [placeholder]="t().contact.emailPh">
           </label>
           <label>
-            Telefone / WhatsApp
-            <input type="tel" name="phone" [(ngModel)]="form.phone" required minlength="10" maxlength="20" autocomplete="tel" inputmode="tel" pattern="[0-9()+\- ]{10,20}" placeholder="(51) 99999-9999">
+            {{ t().contact.phone }}
+            <input type="tel" name="phone" [(ngModel)]="form.phone" required minlength="10" maxlength="20" autocomplete="tel" inputmode="tel" pattern="[0-9()+\- ]{10,20}" [placeholder]="t().contact.phonePh">
           </label>
           <label>
-            Mensagem
-            <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="2000" placeholder="Conte rapidamente o que você precisa"></textarea>
+            {{ t().contact.message }}
+            <textarea name="message" rows="5" [(ngModel)]="form.message" required maxlength="2000" [placeholder]="t().contact.messagePh"></textarea>
           </label>
           <!-- Honeypot: invisível para pessoas; bots que preencherem são descartados no worker -->
           <label class="hp-field" aria-hidden="true">
-            Empresa
+            {{ t().contact.honeypot }}
             <input type="text" name="company" [(ngModel)]="form.company" tabindex="-1" autocomplete="off">
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consent" [(ngModel)]="form.consent" required>
+            <span>{{ t().contact.consentA }}<a href="/privacidade.html" target="_blank" rel="noopener">{{ t().contact.consentLink }}</a></span>
           </label>
           <div class="cf-turnstile" [attr.data-sitekey]="turnstileSiteKey" data-theme="light"></div>
           <button class="btn btn--primary btn--lg" type="submit" [disabled]="f.invalid || status() === 'sending'">
-            {{ status() === 'sending' ? 'Enviando…' : 'Enviar mensagem' }}
+            {{ status() === 'sending' ? t().contact.sending : t().contact.submit }}
           </button>
           @if (status() === 'error') {
-            <p class="form-msg form-msg--err">Não foi possível enviar. Tente pelo WhatsApp ou e-mail ao lado.</p>
+            <p class="form-msg form-msg--err">{{ t().contact.error }}</p>
           }
         </form>
         <div class="contact__aside">
@@ -215,7 +210,7 @@
             <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 7.4 5.4a2 2 0 0 0 2.2 0L20.5 7"/></svg>
             <span>contato&#64;wnlabs.com.br</span>
           </a>
-          <p class="contact__note">Para suporte técnico, o WhatsApp é o caminho mais rápido.</p>
+          <p class="contact__note">{{ t().contact.note }}</p>
         </div>
       </div>
     </div>
@@ -231,11 +226,11 @@
           <path class="modal__check-mark" fill="none" d="M14 27l8 8 16-16"/>
         </svg>
       </div>
-      <h3 id="modal-title">Mensagem enviada!</h3>
-      <p>Recebemos seu contato e retornamos em horário comercial. Se preferir agilizar, chama no WhatsApp.</p>
+      <h3 id="modal-title">{{ t().modal.title }}</h3>
+      <p>{{ t().modal.text }}</p>
       <div class="modal__actions">
-        <a [href]="whatsappUrl" target="_blank" rel="noopener" class="btn btn--whatsapp" (click)="closeModal()">Abrir WhatsApp</a>
-        <button type="button" class="btn btn--ghost" (click)="closeModal()">Fechar</button>
+        <a [href]="whatsappUrl" target="_blank" rel="noopener" class="btn btn--whatsapp" (click)="closeModal()">{{ t().modal.whatsapp }}</a>
+        <button type="button" class="btn btn--ghost" (click)="closeModal()">{{ t().modal.close }}</button>
       </div>
     </div>
   </div>
@@ -245,11 +240,12 @@
   <div class="container footer__inner">
     <img src="assets/wnlabs-principal.svg" alt="wnlabs" height="30">
     <nav class="footer__nav">
-      <a href="#servicos">Serviços</a>
-      <a href="#diferencial">Diferencial</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
+      <a href="#servicos">{{ t().nav.services }}</a>
+      <a href="#diferencial">{{ t().nav.edge }}</a>
+      <a href="#sobre">{{ t().nav.about }}</a>
+      <a href="#contato">{{ t().nav.cta }}</a>
+      <a href="/privacidade.html">{{ t().footer.privacy }}</a>
     </nav>
-    <p>© {{ year }} WN Labs · Soluções em tecnologia · wnlabs.com.br</p>
+    <p>© {{ year }} {{ t().footer.tagline }}</p>
   </div>
 </footer>

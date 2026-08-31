@@ -111,6 +111,27 @@
   &--open { display: flex; }
 }
 
+/* Botão de idioma: chip discreto ao lado do CTA, mostra a língua de destino */
+.lang-toggle {
+  align-self: flex-start;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-72);
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 9px;
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s;
+
+  &:hover {
+    color: var(--brand-dark);
+    border-color: var(--brand);
+  }
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -558,6 +579,22 @@
   }
 }
 
+/* Consentimento LGPD: checkbox lado a lado com o texto, sem o visual dos inputs de texto */
+.contact__form .consent {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  font-weight: 400;
+  color: var(--ink-72);
+
+  input[type='checkbox'] {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-top: 0.2rem;
+    padding: 0;
+    accent-color: var(--brand);
+  }
+}
+
 /* Honeypot: fora da tela, invisível e não focável — pessoas nunca preenchem */
 .hp-field {
   position: absolute !important;
@@ -708,6 +745,8 @@
     border: 0;
     box-shadow: none;
   }
+
+  .lang-toggle { align-self: center; }
 
   .cards { grid-template-columns: repeat(2, 1fr); }
   .cards--three { grid-template-columns: repeat(3, 1fr); }

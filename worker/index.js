@@ -59,6 +59,11 @@ async function handleContact(request, env) {
     return json({ ok: true });
   }
 
+  // LGPD: consentimento com a Política de Privacidade é obrigatório também no backend
+  if (data.consent !== true) {
+    return json({ error: 'É necessário aceitar a Política de Privacidade' }, 400);
+  }
+
   // e) limites de tamanho — acima do limite rejeita, não trunca
   const name = String(data.name || '').trim();
   const email = String(data.email || '').trim();

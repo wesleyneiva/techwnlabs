@@ -1,0 +1,33 @@
+# Deploy contínuo: todo push na main builda e publica no Cloudflare
+# (worker + assets em tech.wnlabs.com.br).
+# Requer o secret CLOUDFLARE_API_TOKEN no repositório
+# (Settings → Secrets and variables → Actions), com um token da Cloudflare
+# criado a partir do template "Edit Cloudflare Workers".
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Build de produção
+        run: npm run build
+
+      - name: Publicar no Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

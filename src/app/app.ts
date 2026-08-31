@@ -1,5 +1,6 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { I18N, Lang } from './i18n';
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -20,7 +21,20 @@ export class App {
   menuOpen = signal(false);
   status = signal<FormStatus>('idle');
 
-  form = { name: '', email: '', phone: '', message: '', company: '' };
+  lang = signal<Lang>(readSavedLang());
+  // Todos os textos da página saem daqui; trocar o signal retraduz tudo na hora.
+  readonly t = computed(() => I18N[this.lang()]);
+
+  toggleLang(): void {
+    const next: Lang = this.lang() === 'pt' ? 'en' : 'pt';
+    this.lang.set(next);
+    document.documentElement.lang = next === 'pt' ? 'pt-BR' : 'en';
+    try {
+      localStorage.setItem('lang', next);
+    } catch {}
+  }
+
+  form = { name: '', email: '', phone: '', message: '', company: '', consent: false };
 
   toggleMenu(): void {
     this.menuOpen.update((v) => !v);
@@ -46,10 +60,18 @@ export class App {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this.status.set('sent');
-      this.form = { name: '', email: '', phone: '', message: '', company: '' };
+      this.form = { name: '', email: '', phone: '', message: '', company: '', consent: false };
       turnstile?.reset();
     } catch {
       this.status.set('error');
     }
+  }
+}
+
+function readSavedLang(): Lang {
+  try {
+    return localStorage.getItem('lang') === 'en' ? 'en' : 'pt';
+  } catch {
+    return 'pt';
   }
 }
