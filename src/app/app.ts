@@ -1,8 +1,14 @@
-import { Component, signal, computed, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, computed, ChangeDetectionStrategy, ElementRef, afterNextRender, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { I18N, Lang } from './i18n';
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
+
+interface Turnstile {
+  render(el: HTMLElement, opts: { sitekey: string; theme: string; language: string }): string;
+  getResponse(id: string): string | undefined;
+  reset(id: string): void;
+}
 
 @Component({
   selector: 'app-root',
@@ -20,6 +26,15 @@ export class App {
 
   menuOpen = signal(false);
   status = signal<FormStatus>('idle');
+
+  private readonly turnstileEl = viewChild.required<ElementRef<HTMLElement>>('turnstile');
+  private turnstileId = '';
+
+  constructor() {
+    // O script do Turnstile vem com render=explicit: quem desenha o widget é o componente, depois que o
+    // formulário existe. No modo automático o script podia carregar antes do Angular e o widget não aparecia.
+    afterNextRender(() => this.renderTurnstile());
+  }
 
   lang = signal<Lang>(readSavedLang());
   // Todos os textos da página saem daqui; trocar o signal retraduz tudo na hora.
@@ -52,20 +67,38 @@ export class App {
     if (this.status() === 'sending') return;
     this.status.set('sending');
     try {
-      const turnstile = (window as { turnstile?: { getResponse(): string; reset(): void } }).turnstile;
+      const turnstile = getTurnstile();
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...this.form, turnstileToken: turnstile?.getResponse() ?? '' }),
+        body: JSON.stringify({ ...this.form, turnstileToken: turnstile?.getResponse(this.turnstileId) ?? '' }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this.status.set('sent');
       this.form = { name: '', email: '', phone: '', message: '', company: '', consent: false };
-      turnstile?.reset();
+      turnstile?.reset(this.turnstileId);
     } catch {
       this.status.set('error');
     }
   }
+
+  // Espera o script (async) ficar pronto, por até ~15 s.
+  private renderTurnstile(tries = 0): void {
+    const turnstile = getTurnstile();
+    if (turnstile) {
+      this.turnstileId = turnstile.render(this.turnstileEl().nativeElement, {
+        sitekey: this.turnstileSiteKey,
+        theme: 'light',
+        language: this.lang() === 'pt' ? 'pt-br' : 'en',
+      });
+    } else if (tries < 75) {
+      setTimeout(() => this.renderTurnstile(tries + 1), 200);
+    }
+  }
+}
+
+function getTurnstile(): Turnstile | undefined {
+  return (window as { turnstile?: Turnstile }).turnstile;
 }
 
 function readSavedLang(): Lang {

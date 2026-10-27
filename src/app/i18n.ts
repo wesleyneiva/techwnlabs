@@ -7,6 +7,7 @@ const pt = {
   nav: {
     services: 'Serviços',
     edge: 'Diferencial',
+    projects: 'Projetos',
     about: 'Sobre',
     cta: 'Fale conosco',
     openMenu: 'Abrir menu',
@@ -23,12 +24,9 @@ const pt = {
     checks: ['Software sob demanda', 'Dados e IA', 'LGPD desde o projeto'],
     ctaPrimary: 'Fale conosco →',
     ctaSecondary: 'Ver serviços',
-    mockNav: ['Painel', 'Relatórios', 'Dados', 'LGPD'],
-    mockTitle: 'Visão geral',
-    mockStat1: 'disponibilidade',
-    mockStat2: 'eficiência',
-    floatTitle: 'Conforme à LGPD',
-    floatSub: 'desde o primeiro commit',
+    mockAlt: 'Painel do Marcus, sistema de gestão da WN Labs, com vendas, estoque e validades do dia',
+    floatTitle: 'Feito pela WN Labs',
+    floatSub: 'Marcus, gestão para mercados',
   },
   services: {
     eyebrow: 'Serviços',
@@ -66,7 +64,7 @@ const pt = {
       title: 'Suporte técnico',
       text:
         'Manutenção de computadores e notebooks, instalação de software, formatação ' +
-        'e impressoras, para você ou sua empresa.',
+        'e periféricos, para você ou sua empresa.',
     },
   },
   edge: {
@@ -82,6 +80,25 @@ const pt = {
       'Privacidade por padrão, termos e políticas alinhados ao produto, e um único ' +
       'responsável pelas duas pontas.',
     bannerCta: 'Conversar sobre o seu projeto →',
+  },
+  projects: {
+    eyebrow: 'Projetos',
+    h2a: 'Software nosso, ',
+    h2accent: 'em uso de verdade',
+    lead: 'O mesmo cuidado que levamos aos projetos dos clientes, aplicado a um produto próprio.',
+    imgAlt: 'Tela de relatórios do Marcus com indicadores e insights gerados por IA',
+    tagline: 'gestão inteligente para o seu negócio',
+    text:
+      'Sistema web de gestão para mercados e mercadinhos, oferecido como serviço: caixa, estoque com ' +
+      'validade, compras, financeiro com DRE e relatórios que cruzam as vendas com o clima.',
+    feats: [
+      'Caixa feito para teclado, leitor e balança',
+      'Nota fiscal em XML conferida e lançada sozinha',
+      'Insights com IA a partir dos números da loja',
+    ],
+    stackLabel: 'Tecnologias',
+    ctaDemo: 'Ver demonstração →',
+    ctaTalk: 'Quero um sistema assim',
   },
   about: {
     eyebrow: 'Sobre',
@@ -141,6 +158,7 @@ const en: typeof pt = {
   nav: {
     services: 'Services',
     edge: 'Our edge',
+    projects: 'Projects',
     about: 'About',
     cta: 'Contact us',
     openMenu: 'Open menu',
@@ -156,12 +174,9 @@ const en: typeof pt = {
     checks: ['Custom software', 'Data & AI', 'LGPD by design'],
     ctaPrimary: 'Contact us →',
     ctaSecondary: 'See services',
-    mockNav: ['Dashboard', 'Reports', 'Data', 'LGPD'],
-    mockTitle: 'Overview',
-    mockStat1: 'uptime',
-    mockStat2: 'efficiency',
-    floatTitle: 'LGPD compliant',
-    floatSub: 'from the first commit',
+    mockAlt: "Dashboard of Marcus, WN Labs' management system, with the day's sales, stock and expiry dates",
+    floatTitle: 'Built by WN Labs',
+    floatSub: 'Marcus, management for grocery stores',
   },
   services: {
     eyebrow: 'Services',
@@ -199,7 +214,7 @@ const en: typeof pt = {
       title: 'Tech support',
       text:
         'Computer and notebook maintenance, software installation, formatting and ' +
-        'printers, for you or your business.',
+        'peripherals, for you or your business.',
     },
   },
   edge: {
@@ -215,6 +230,25 @@ const en: typeof pt = {
       'Privacy by default, terms and policies aligned with the product, and a single ' +
       'person accountable for both ends.',
     bannerCta: "Let's talk about your project →",
+  },
+  projects: {
+    eyebrow: 'Projects',
+    h2a: 'Our own software, ',
+    h2accent: 'in real use',
+    lead: 'The same care we bring to client projects, applied to a product of our own.',
+    imgAlt: 'Marcus reports screen with indicators and AI-generated insights',
+    tagline: 'smart management for your business',
+    text:
+      'Web management system for grocery stores, offered as a service: checkout, stock with expiry ' +
+      'dates, purchasing, finance with P&L and reports that cross sales with the weather.',
+    feats: [
+      'Checkout built for keyboard, scanner and scale',
+      'XML invoices checked and recorded on their own',
+      "AI insights drawn from the store's numbers",
+    ],
+    stackLabel: 'Technologies',
+    ctaDemo: 'See the demo →',
+    ctaTalk: 'I want a system like this',
   },
   about: {
     eyebrow: 'About',
