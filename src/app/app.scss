@@ -430,8 +430,9 @@
     width: 24px;
     height: 24px;
     fill: none;
+    // Mesmo padrão do Marcus: Lucide 0.460.0, traço 2
     stroke: currentColor;
-    stroke-width: 1.8;
+    stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
