@@ -24,9 +24,9 @@ const pt = {
     checks: ['Software sob demanda', 'Dados e IA', 'LGPD desde o projeto'],
     ctaPrimary: 'Fale conosco →',
     ctaSecondary: 'Ver serviços',
-    mockAlt: 'Painel do Marcus, sistema de gestão da WN Labs, com vendas, estoque e validades do dia',
+    mockAlt: 'Painel do Marcus, sistema de gestão para o varejo feito pela WN Labs, com vendas e estoque do dia',
     floatTitle: 'Feito pela WN Labs',
-    floatSub: 'Marcus, gestão para mercados',
+    floatSub: 'Marcus, gestão para o varejo',
   },
   services: {
     eyebrow: 'Serviços',
@@ -89,10 +89,12 @@ const pt = {
     imgAlt: 'Tela de relatórios do Marcus com indicadores e insights gerados por IA',
     tagline: 'gestão inteligente para o seu negócio',
     text:
-      'Sistema web de gestão para mercados e mercadinhos, oferecido como serviço: caixa, estoque com ' +
-      'validade, compras, financeiro com DRE e relatórios que cruzam as vendas com o clima.',
+      'Sistema web de gestão para o varejo, oferecido como serviço: de mercados a lojas de calçados, ' +
+      'roupas e artigos esportivos. Caixa, estoque, compras, clientes, financeiro com DRE e relatórios ' +
+      'que cruzam as vendas com o clima, ajustados ao ramo de cada loja.',
     feats: [
-      'Caixa feito para teclado, leitor e balança',
+      'Grade de tamanho e cor, troca e vale-troca',
+      'Validade e balança para quem vende alimentos',
       'Nota fiscal em XML conferida e lançada sozinha',
       'Insights com IA a partir dos números da loja',
     ],
@@ -174,9 +176,9 @@ const en: typeof pt = {
     checks: ['Custom software', 'Data & AI', 'LGPD by design'],
     ctaPrimary: 'Contact us →',
     ctaSecondary: 'See services',
-    mockAlt: "Dashboard of Marcus, WN Labs' management system, with the day's sales, stock and expiry dates",
+    mockAlt: "Dashboard of Marcus, the retail management system built by WN Labs, with the day's sales and stock",
     floatTitle: 'Built by WN Labs',
-    floatSub: 'Marcus, management for grocery stores',
+    floatSub: 'Marcus, retail management',
   },
   services: {
     eyebrow: 'Services',
@@ -239,10 +241,12 @@ const en: typeof pt = {
     imgAlt: 'Marcus reports screen with indicators and AI-generated insights',
     tagline: 'smart management for your business',
     text:
-      'Web management system for grocery stores, offered as a service: checkout, stock with expiry ' +
-      'dates, purchasing, finance with P&L and reports that cross sales with the weather.',
+      'Web management system for retail, offered as a service: from grocery stores to shoe, clothing ' +
+      'and sporting goods shops. Checkout, stock, purchasing, customers, finance with P&L and reports ' +
+      'that cross sales with the weather, tailored to each store\'s line of business.',
     feats: [
-      'Checkout built for keyboard, scanner and scale',
+      'Size and color grids, returns and store credit',
+      'Expiry dates and scales for food retailers',
       'XML invoices checked and recorded on their own',
       "AI insights drawn from the store's numbers",
     ],
