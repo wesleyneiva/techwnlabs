@@ -143,6 +143,29 @@
           </div>
         </div>
       </article>
+      <article class="case case--rev">
+        <div class="case__media">
+          <img src="assets/atrio/painel.webp" [alt]="t().projects.atrio.imgAlt" width="1440" height="900" loading="lazy">
+        </div>
+        <div class="case__body">
+          <div class="case__brand">
+            <img src="assets/atrio/atrio-icone.svg" alt="" width="44" height="44">
+            <div><strong>Átrio</strong><span>{{ t().projects.atrio.tagline }}</span></div>
+          </div>
+          <p>{{ t().projects.atrio.text }}</p>
+          <ul class="case__feats">
+            @for (feat of t().projects.atrio.feats; track $index) {
+              <li>{{ feat }}</li>
+            }
+          </ul>
+          <ul class="case__stack" [attr.aria-label]="t().projects.stackLabel">
+            <li>Angular</li><li>.NET</li><li>PostgreSQL</li><li>WhatsApp</li>
+          </ul>
+          <div class="case__actions">
+            <a href="#contato" class="btn btn--primary">{{ t().projects.atrio.ctaTalk }}</a>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 

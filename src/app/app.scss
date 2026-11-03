@@ -451,7 +451,7 @@
   padding: 0.3rem 0.8rem;
 }
 
-/* Projetos: case do Marcus */
+/* Projetos: cases do Marcus e do Átrio */
 .case {
   display: grid;
   margin-top: 2.5rem;
@@ -809,4 +809,8 @@
   .case { grid-template-columns: 1.2fr 1fr; align-items: stretch; }
   .case__media { padding: 2.5rem; }
   .case__body { padding: 2.5rem 2.5rem 2.5rem 1rem; align-self: center; }
+  // segundo case com a imagem à direita, alternando com o primeiro
+  .case--rev { grid-template-columns: 1fr 1.2fr; }
+  .case--rev .case__media { order: 2; }
+  .case--rev .case__body { padding: 2.5rem 1rem 2.5rem 2.5rem; }
 }

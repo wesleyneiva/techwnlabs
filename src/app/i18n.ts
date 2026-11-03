@@ -85,7 +85,7 @@ const pt = {
     eyebrow: 'Projetos',
     h2a: 'Software nosso, ',
     h2accent: 'em uso de verdade',
-    lead: 'O mesmo cuidado que levamos aos projetos dos clientes, aplicado a um produto próprio.',
+    lead: 'O mesmo cuidado que levamos aos projetos dos clientes, aplicado a produtos próprios.',
     imgAlt: 'Tela de relatórios do Marcus com indicadores e insights gerados por IA',
     tagline: 'gestão inteligente para o seu negócio',
     text:
@@ -101,6 +101,21 @@ const pt = {
     stackLabel: 'Tecnologias',
     ctaDemo: 'Ver demonstração →',
     ctaTalk: 'Quero um sistema assim',
+    atrio: {
+      imgAlt: 'Painel do Átrio com volume de atendimentos, tempos de espera e de resposta e nota média',
+      tagline: 'CXM de atendimento pelo WhatsApp',
+      text:
+        'Central de atendimento pelo WhatsApp, oferecida como serviço: um número, vários atendentes. ' +
+        'O bot recebe o cliente, entende o assunto e passa a conversa para a fila do setor certo; ' +
+        'a equipe atende em tempo real e a supervisão acompanha tudo, com painel e relatórios.',
+      feats: [
+        'Bot com editor visual, menus em botões e lista',
+        'Filas por setor com distribuição automática',
+        'Supervisão ao vivo, painel e relatórios em Excel',
+        'Campanhas com modelos aprovados do WhatsApp',
+      ],
+      ctaTalk: 'Quero um atendimento assim',
+    },
   },
   about: {
     eyebrow: 'Sobre',
@@ -237,7 +252,7 @@ const en: typeof pt = {
     eyebrow: 'Projects',
     h2a: 'Our own software, ',
     h2accent: 'in real use',
-    lead: 'The same care we bring to client projects, applied to a product of our own.',
+    lead: 'The same care we bring to client projects, applied to products of our own.',
     imgAlt: 'Marcus reports screen with indicators and AI-generated insights',
     tagline: 'smart management for your business',
     text:
@@ -253,6 +268,21 @@ const en: typeof pt = {
     stackLabel: 'Technologies',
     ctaDemo: 'See the demo →',
     ctaTalk: 'I want a system like this',
+    atrio: {
+      imgAlt: 'Átrio dashboard with conversation volume, wait and response times and average rating',
+      tagline: 'WhatsApp customer service CXM',
+      text:
+        'WhatsApp customer service hub, offered as a service: one number, many agents. ' +
+        'The bot greets the customer, understands the subject and routes the conversation to the right ' +
+        "department's queue; the team answers in real time and supervisors follow everything, with dashboards and reports.",
+      feats: [
+        'Bot with a visual editor, menus as buttons and lists',
+        'Department queues with automatic distribution',
+        'Live supervision, dashboards and Excel reports',
+        'Campaigns with approved WhatsApp templates',
+      ],
+      ctaTalk: 'I want service like this',
+    },
   },
   about: {
     eyebrow: 'About',
