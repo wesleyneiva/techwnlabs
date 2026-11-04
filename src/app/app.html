@@ -121,7 +121,7 @@
       </div>
       <article class="case">
         <div class="case__media">
-          <app-carousel [slides]="t().projects.slides" [labels]="t().projects.carousel" />
+          <app-carousel [slides]="t().projects.slides" [label]="t().projects.carousel.label" [prevLabel]="t().projects.carousel.prev" [nextLabel]="t().projects.carousel.next" [goLabel]="t().projects.carousel.go" />
         </div>
         <div class="case__body">
           <div class="case__brand">
@@ -145,7 +145,7 @@
       </article>
       <article class="case case--rev">
         <div class="case__media">
-          <app-carousel [slides]="t().projects.atrio.slides" [labels]="t().projects.carousel" />
+          <app-carousel [slides]="t().projects.atrio.slides" [label]="t().projects.carousel.label" [prevLabel]="t().projects.carousel.prev" [nextLabel]="t().projects.carousel.next" [goLabel]="t().projects.carousel.go" />
         </div>
         <div class="case__body">
           <div class="case__brand">

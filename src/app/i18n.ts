@@ -91,9 +91,6 @@ const pt = {
       next: 'Próxima tela',
       go: 'Ir para a tela',
       label: 'Telas do sistema, com dados fictícios',
-      open: 'Ampliar',
-      close: 'Fechar',
-      zoom: 'Mais zoom',
     },
     slides: [
       {
@@ -319,9 +316,6 @@ const en: typeof pt = {
       next: 'Next screen',
       go: 'Go to screen',
       label: 'System screens, with fictional data',
-      open: 'Enlarge',
-      close: 'Close',
-      zoom: 'Zoom in',
     },
     slides: [
       {
