@@ -2,21 +2,35 @@
   class="carousel"
   role="group"
   aria-roledescription="carousel"
-  [attr.aria-label]="label()"
+  [attr.aria-label]="labels().label"
   (mouseenter)="hold(true)"
   (mouseleave)="hold(false)"
   (focusin)="hold(true)"
   (focusout)="hold(false)"
 >
-  <div class="carousel__track" #track (scroll)="onScroll()" (scrollend)="onScrollEnd()" (pointerdown)="onPointerDown()">
-    @for (slide of slides(); track slide.src) {
-      <img [src]="slide.src" [alt]="slide.alt" width="1440" height="900" loading="lazy">
-    }
+  <div class="carousel__view">
+    <div class="carousel__track" #track (scroll)="onScroll()" (scrollend)="onScrollEnd()" (pointerdown)="onPointerDown()">
+      @for (slide of slides(); track slide.src; let i = $index) {
+        <button
+          type="button"
+          class="carousel__slide"
+          [attr.aria-label]="labels().open + ': ' + slide.caption"
+          [attr.tabindex]="i === index() ? 0 : -1"
+          (click)="open(i)"
+        >
+          <img [src]="slide.src" [alt]="slide.alt" width="1440" height="900" loading="lazy">
+        </button>
+      }
+    </div>
+    <span class="carousel__hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/><path d="M9 21H3v-6"/></svg>
+      {{ labels().open }}
+    </span>
   </div>
   <div class="carousel__bar">
     <p class="carousel__caption">{{ slides()[index()].caption }}</p>
     <div class="carousel__nav">
-      <button type="button" class="carousel__arrow" [attr.aria-label]="prevLabel()" (click)="goByUser(index() - 1)">
+      <button type="button" class="carousel__arrow" [attr.aria-label]="labels().prev" (click)="goByUser(index() - 1)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
       </button>
       @for (slide of slides(); track slide.src; let i = $index) {
@@ -24,14 +38,41 @@
           type="button"
           class="carousel__dot"
           [class.carousel__dot--on]="i === index()"
-          [attr.aria-label]="goLabel() + ' ' + (i + 1)"
+          [attr.aria-label]="labels().go + ' ' + (i + 1)"
           [attr.aria-current]="i === index() ? 'true' : null"
           (click)="goByUser(i)"
         ></button>
       }
-      <button type="button" class="carousel__arrow" [attr.aria-label]="nextLabel()" (click)="goByUser(index() + 1)">
+      <button type="button" class="carousel__arrow" [attr.aria-label]="labels().next" (click)="goByUser(index() + 1)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
       </button>
     </div>
   </div>
 </div>
+
+<dialog class="viewer" #dialog [attr.aria-label]="labels().label" (keydown)="onDialogKey($event)" (close)="onClosed()">
+  <div class="viewer__stage" [class.viewer__stage--zoomed]="zoomed()" #stage (click)="onStageClick($event)">
+    @if (viewing()) {
+      <img [src]="fullSrc(slides()[index()])" [alt]="slides()[index()].alt" width="2400" height="1500" (click)="toggleZoom($event)">
+    }
+  </div>
+  <button type="button" class="viewer__btn viewer__close" [attr.aria-label]="labels().close" (click)="close()">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+  <div class="viewer__bar">
+    <button type="button" class="viewer__btn" [attr.aria-label]="labels().prev" (click)="goByUser(index() - 1)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <p class="viewer__caption">{{ index() + 1 }} / {{ slides().length }} · {{ slides()[index()].caption }}</p>
+    <button type="button" class="viewer__btn" [attr.aria-label]="labels().next" (click)="goByUser(index() + 1)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+    <button type="button" class="viewer__btn" [attr.aria-label]="labels().zoom" [attr.aria-pressed]="zoomed()" (click)="toggleZoom()">
+      @if (zoomed()) {
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg>
+      } @else {
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+      }
+    </button>
+  </div>
+</dialog>

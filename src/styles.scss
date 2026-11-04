@@ -33,3 +33,6 @@ h1, h2, h3 {
 img { max-width: 100%; }
 
 a { color: var(--brand-dark); }
+
+/* Trava a página atrás da tela ampliada do carrossel */
+html:has(dialog[open]) { overflow: hidden; }

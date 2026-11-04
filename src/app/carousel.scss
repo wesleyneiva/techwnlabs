@@ -4,6 +4,8 @@
   min-width: 0;
 }
 
+.carousel__view { position: relative; }
+
 .carousel__track {
   display: flex;
   overflow-x: auto;
@@ -17,15 +19,48 @@
 
   &::-webkit-scrollbar { display: none; }
 
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  cursor: zoom-in;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
   img {
-    flex: 0 0 100%;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  }
+
+  &:focus-visible { outline-offset: -3px; }
+}
+
+.carousel__hint {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(35, 39, 47, 0.88);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  pointer-events: none;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 }
 
@@ -110,6 +145,110 @@ button {
   width: 14px;
   border-radius: 4px;
   background: var(--brand);
+}
+
+/* Tela ampliada */
+.viewer {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(18, 22, 28, 0.96);
+  color: #fff;
+  overflow: hidden;
+
+  &[open] {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  &::backdrop { background: rgba(18, 22, 28, 0.96); }
+}
+
+.viewer__stage {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 1rem;
+  overflow: auto;
+
+  img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100dvh - 6rem); // tela menos a barra de baixo e o respiro
+    border-radius: 8px;
+    cursor: zoom-in;
+  }
+}
+
+.viewer__stage--zoomed {
+  display: block;
+  place-items: start; // centralizado, a sobra da esquerda ficaria fora do alcance da rolagem
+  padding: 0;
+
+  img {
+    width: 200%;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    cursor: zoom-out;
+  }
+}
+
+.viewer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom));
+}
+
+.viewer__caption {
+  margin: 0;
+  min-width: 13rem;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.viewer__btn {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  color: #fff;
+
+  &:hover { background: rgba(255, 255, 255, 0.14); }
+  &:focus-visible { outline-color: #fff; }
+
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.viewer__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(18, 22, 28, 0.8);
+}
+
+@media (max-width: 640px) {
+  .viewer__caption { min-width: 0; flex: 1; font-size: 0.72rem; }
+  .viewer__stage--zoomed img { width: 320%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
