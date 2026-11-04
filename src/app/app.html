@@ -121,7 +121,7 @@
       </div>
       <article class="case">
         <div class="case__media">
-          <img src="assets/marcus/relatorios-ia.webp" [alt]="t().projects.imgAlt" width="1440" height="900" loading="lazy">
+          <app-carousel [slides]="t().projects.slides" [label]="t().projects.carousel.label" [prevLabel]="t().projects.carousel.prev" [nextLabel]="t().projects.carousel.next" [goLabel]="t().projects.carousel.go" />
         </div>
         <div class="case__body">
           <div class="case__brand">
@@ -145,7 +145,7 @@
       </article>
       <article class="case case--rev">
         <div class="case__media">
-          <img src="assets/atrio/painel.webp" [alt]="t().projects.atrio.imgAlt" width="1440" height="900" loading="lazy">
+          <app-carousel [slides]="t().projects.atrio.slides" [label]="t().projects.carousel.label" [prevLabel]="t().projects.carousel.prev" [nextLabel]="t().projects.carousel.next" [goLabel]="t().projects.carousel.go" />
         </div>
         <div class="case__body">
           <div class="case__brand">

@@ -86,7 +86,39 @@ const pt = {
     h2a: 'Software nosso, ',
     h2accent: 'em uso de verdade',
     lead: 'O mesmo cuidado que levamos aos projetos dos clientes, aplicado a produtos próprios.',
-    imgAlt: 'Tela de relatórios do Marcus com indicadores e insights gerados por IA',
+    carousel: {
+      prev: 'Tela anterior',
+      next: 'Próxima tela',
+      go: 'Ir para a tela',
+      label: 'Telas do sistema, com dados fictícios',
+    },
+    slides: [
+      {
+        src: 'assets/marcus/relatorios-ia.webp',
+        alt: 'Tela de relatórios do Marcus com indicadores e insights gerados por IA',
+        caption: 'Relatórios com IA',
+      },
+      {
+        src: 'assets/marcus/dashboard.webp',
+        alt: 'Dashboard do Marcus com as vendas e o estoque do dia',
+        caption: 'Dashboard do dia',
+      },
+      {
+        src: 'assets/marcus/caixa.webp',
+        alt: 'Caixa do Marcus com os itens de uma venda e o total',
+        caption: 'Caixa (PDV)',
+      },
+      {
+        src: 'assets/marcus/produtos.webp',
+        alt: 'Lista de produtos do Marcus com custo, venda, margem e estoque',
+        caption: 'Produtos e estoque',
+      },
+      {
+        src: 'assets/marcus/dre.webp',
+        alt: 'Financeiro do Marcus com a DRE do mês e o destino de cada R$ 100 vendidos',
+        caption: 'Financeiro com DRE',
+      },
+    ],
     tagline: 'gestão inteligente para o seu negócio',
     text:
       'Sistema web de gestão para o varejo, oferecido como serviço: de mercados a lojas de calçados, ' +
@@ -102,7 +134,33 @@ const pt = {
     ctaDemo: 'Ver demonstração →',
     ctaTalk: 'Quero um sistema assim',
     atrio: {
-      imgAlt: 'Painel do Átrio com volume de atendimentos, tempos de espera e de resposta e nota média',
+      slides: [
+        {
+          src: 'assets/atrio/atendimento.webp',
+          alt: 'Conversa no Átrio com a lista de atendimentos, o bot e a atendente',
+          caption: 'Atendimento',
+        },
+        {
+          src: 'assets/atrio/bot.webp',
+          alt: 'Editor visual de bot do Átrio com o simulador ao lado',
+          caption: 'Editor de bots',
+        },
+        {
+          src: 'assets/atrio/supervisao.webp',
+          alt: 'Supervisão do Átrio com agentes, filas por setor e atendimentos abertos',
+          caption: 'Supervisão ao vivo',
+        },
+        {
+          src: 'assets/atrio/painel.webp',
+          alt: 'Painel do Átrio com volume de atendimentos, tempos de espera e de resposta e nota média',
+          caption: 'Painel',
+        },
+        {
+          src: 'assets/atrio/relatorios.webp',
+          alt: 'Relatórios do Átrio com a performance de cada agente',
+          caption: 'Relatórios',
+        },
+      ],
       tagline: 'CXM de atendimento pelo WhatsApp',
       text:
         'Central de atendimento pelo WhatsApp, oferecida como serviço: um número, vários atendentes. ' +
@@ -253,7 +311,39 @@ const en: typeof pt = {
     h2a: 'Our own software, ',
     h2accent: 'in real use',
     lead: 'The same care we bring to client projects, applied to products of our own.',
-    imgAlt: 'Marcus reports screen with indicators and AI-generated insights',
+    carousel: {
+      prev: 'Previous screen',
+      next: 'Next screen',
+      go: 'Go to screen',
+      label: 'System screens, with fictional data',
+    },
+    slides: [
+      {
+        src: 'assets/marcus/relatorios-ia.webp',
+        alt: 'Marcus reports screen with indicators and AI-generated insights',
+        caption: 'AI reports',
+      },
+      {
+        src: 'assets/marcus/dashboard.webp',
+        alt: "Marcus dashboard with the day's sales and stock",
+        caption: 'Daily dashboard',
+      },
+      {
+        src: 'assets/marcus/caixa.webp',
+        alt: 'Marcus checkout with the items of a sale and the total',
+        caption: 'Checkout (POS)',
+      },
+      {
+        src: 'assets/marcus/produtos.webp',
+        alt: 'Marcus product list with cost, price, margin and stock',
+        caption: 'Products and stock',
+      },
+      {
+        src: 'assets/marcus/dre.webp',
+        alt: 'Marcus finance screen with the monthly P&L and where each R$ 100 sold goes',
+        caption: 'Finance with P&L',
+      },
+    ],
     tagline: 'smart management for your business',
     text:
       'Web management system for retail, offered as a service: from grocery stores to shoe, clothing ' +
@@ -269,7 +359,33 @@ const en: typeof pt = {
     ctaDemo: 'See the demo →',
     ctaTalk: 'I want a system like this',
     atrio: {
-      imgAlt: 'Átrio dashboard with conversation volume, wait and response times and average rating',
+      slides: [
+        {
+          src: 'assets/atrio/atendimento.webp',
+          alt: 'Átrio conversation with the service list, the bot and the agent',
+          caption: 'Customer service',
+        },
+        {
+          src: 'assets/atrio/bot.webp',
+          alt: 'Átrio visual bot editor with the simulator beside it',
+          caption: 'Bot editor',
+        },
+        {
+          src: 'assets/atrio/supervisao.webp',
+          alt: 'Átrio supervision with agents, department queues and open conversations',
+          caption: 'Live supervision',
+        },
+        {
+          src: 'assets/atrio/painel.webp',
+          alt: 'Átrio dashboard with conversation volume, wait and response times and average rating',
+          caption: 'Dashboard',
+        },
+        {
+          src: 'assets/atrio/relatorios.webp',
+          alt: 'Átrio reports with the performance of each agent',
+          caption: 'Reports',
+        },
+      ],
       tagline: 'WhatsApp customer service CXM',
       text:
         'WhatsApp customer service hub, offered as a service: one number, many agents. ' +

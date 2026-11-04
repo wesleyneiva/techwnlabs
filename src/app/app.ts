@@ -1,5 +1,6 @@
 import { Component, signal, computed, ChangeDetectionStrategy, ElementRef, afterNextRender, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Carousel } from './carousel';
 import { I18N, Lang } from './i18n';
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
@@ -12,7 +13,7 @@ interface Turnstile {
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule, Carousel],
   templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.scss',

@@ -1,0 +1,37 @@
+<div
+  class="carousel"
+  role="group"
+  aria-roledescription="carousel"
+  [attr.aria-label]="label()"
+  (mouseenter)="hold(true)"
+  (mouseleave)="hold(false)"
+  (focusin)="hold(true)"
+  (focusout)="hold(false)"
+>
+  <div class="carousel__track" #track (scroll)="onScroll()" (scrollend)="onScrollEnd()" (pointerdown)="onPointerDown()">
+    @for (slide of slides(); track slide.src) {
+      <img [src]="slide.src" [alt]="slide.alt" width="1440" height="900" loading="lazy">
+    }
+  </div>
+  <div class="carousel__bar">
+    <p class="carousel__caption">{{ slides()[index()].caption }}</p>
+    <div class="carousel__nav">
+      <button type="button" class="carousel__arrow" [attr.aria-label]="prevLabel()" (click)="goByUser(index() - 1)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      @for (slide of slides(); track slide.src; let i = $index) {
+        <button
+          type="button"
+          class="carousel__dot"
+          [class.carousel__dot--on]="i === index()"
+          [attr.aria-label]="goLabel() + ' ' + (i + 1)"
+          [attr.aria-current]="i === index() ? 'true' : null"
+          (click)="goByUser(i)"
+        ></button>
+      }
+      <button type="button" class="carousel__arrow" [attr.aria-label]="nextLabel()" (click)="goByUser(index() + 1)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
