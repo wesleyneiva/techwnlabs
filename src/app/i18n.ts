@@ -224,7 +224,7 @@ const pt = {
   },
   footer: {
     privacy: 'Política de Privacidade',
-    tagline: 'WN Labs · Soluções em tecnologia · wnlabs.com.br',
+    tagline: 'WN Labs · Soluções em tecnologia · contato@wnlabs.com.br',
     legal: '69.921.760 WESLEY NEIVA GOMES · CNPJ 69.921.760/0001-38',
   },
 };
@@ -450,7 +450,7 @@ const en: typeof pt = {
   },
   footer: {
     privacy: 'Privacy Policy',
-    tagline: 'WN Labs · Technology solutions · wnlabs.com.br',
+    tagline: 'WN Labs · Technology solutions · contato@wnlabs.com.br',
     legal: '69.921.760 WESLEY NEIVA GOMES · CNPJ 69.921.760/0001-38',
   },
 };
